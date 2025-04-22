@@ -16,7 +16,7 @@ import {
   BarChart3,
   Calculator,
 } from "lucide-react"
-
+import { ChangeEvent } from 'react';
 export default function SalesCalculatorPage() {
   // Form inputs with default values
   const [formData, setFormData] = useState({
@@ -120,30 +120,32 @@ export default function SalesCalculatorPage() {
     })
   }
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
+
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: Number(value) || 0,
-    })
+    });
   }
-
-  const formatCurrency = (value) => {
+  
+  const formatCurrency = (value: number): string => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
       maximumFractionDigits: 0,
-    }).format(value)
+    }).format(value);
   }
-
-  const formatPercent = (value) => {
+  
+  const formatPercent = (value: number): string => {
     return new Intl.NumberFormat("en-US", {
       style: "percent",
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    }).format(value)
+    }).format(value);
   }
-
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
       <header className="bg-white shadow-md py-6">
@@ -318,7 +320,10 @@ export default function SalesCalculatorPage() {
 
                 <div className="mt-8 text-center">
                   <Button
-                    onClick={() => document.querySelector('[data-value="results"]').click()}
+                    onClick={() => {
+                      const resultsTab = document.querySelector('[data-value="results"]');
+                      if (resultsTab instanceof HTMLElement) resultsTab.click();
+                    }}
                     className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-2 text-lg"
                   >
                     Calculate Results <ArrowRight className="ml-2 h-5 w-5" />
@@ -523,7 +528,10 @@ export default function SalesCalculatorPage() {
 
                 <div className="mt-8 text-center">
                   <Button
-                    onClick={() => document.querySelector('[data-value="form"]').click()}
+                    onClick={() => {
+                      const formTab = document.querySelector('[data-value="form"]');
+                      if (formTab instanceof HTMLElement) formTab.click();
+                    }}
                     className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-2 text-lg"
                   >
                     Modify Your Data
