@@ -65,7 +65,7 @@ export default function SalesCalculatorPage() {
   }, [formData])
 
   const calculateResults = () => {
-    const { marketingSpend, leads, inboundCalls, missedCalls, appointments, sales, averageSale, newLTA } = formData
+    const { marketingSpend, leads,  missedCalls, appointments, sales, averageSale, newLTA } = formData
 
     // Current metrics calculations
     const currentMonthlyRevenue = sales * averageSale
@@ -150,7 +150,7 @@ export default function SalesCalculatorPage() {
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold text-amber-700">SMARTER Prospecting ROI Calculator</h1>
           <p className="text-gray-600 mt-2">
-            See How Much More You'd Make From Your 'Front End Sales' If You Converted More Leads To Appointments!
+            See How Much More You&apos;d Make From Your &apos;Front End Sales&apos; If You Converted More Leads To Appointments!
           </p>
         </div>
       </header>
